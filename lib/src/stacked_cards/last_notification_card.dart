@@ -39,7 +39,7 @@ class LastNotificationCard extends StatelessWidget {
             duration: const Duration(seconds: 1),
             curve: Curves.easeOut,
             width: MediaQuery.of(context).size.width,
-            height: height,
+            height: 180,
             child: Stack(
               children: [
                 Column(
@@ -64,7 +64,7 @@ class LastNotificationCard extends StatelessWidget {
                             child: Text(notification.prize,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 12,
+                                    fontSize: 16,
                                     color: Colors.blue)),
                           ),
                         ],
