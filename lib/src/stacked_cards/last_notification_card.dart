@@ -39,7 +39,7 @@ class LastNotificationCard extends StatelessWidget {
             duration: const Duration(seconds: 1),
             curve: Curves.easeOut,
             width: MediaQuery.of(context).size.width,
-            height: 140,
+            height: 168,
             child: Stack(
               children: [
                 Column(
@@ -60,32 +60,19 @@ class LastNotificationCard extends StatelessWidget {
                             child: Image.asset(notification.logo, width: 120),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
+                            padding: const EdgeInsets.only(bottom: 4.0),
                             child: Text(notification.prize,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14,
                                     color: Colors.blue)),
                           ),
-                          RichText(
-                            textAlign: TextAlign.left,
-                            text: TextSpan(
-                              text: "Product: ",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey.shade700,
-                                  fontWeight: FontWeight.w700),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: notification.product,
-                                    style: const TextStyle(fontWeight: FontWeight.w500)),
-                              ],
-                            ),
-                          ),
+                          Text(notification.product,
+                              style: const TextStyle(
+                                  fontSize: 11, fontWeight: FontWeight.w500)),
                         ],
                       ),
                     ),
-
                     Divider(),
                     Padding(
                       padding:
@@ -144,18 +131,20 @@ class LastNotificationCard extends StatelessWidget {
                         .value,
                     child: Container(
                       width: 32,
-                      height: 27,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: Color(0xff40e7f2),
                       ),
-                      child: Text(
-                        totalCount.toString(),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8),
+                        child: Text(
+                          totalCount.toString(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
