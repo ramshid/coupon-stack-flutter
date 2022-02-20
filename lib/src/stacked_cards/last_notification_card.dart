@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:intl/intl.dart';
-
-import '../constants.dart';
+import '../clipp.dart';
 import '../model/notification_card.dart';
 
 /// [LastNotificationCard] is the topmost card on the stack
@@ -11,28 +9,14 @@ class LastNotificationCard extends StatelessWidget {
   final AnimationController controller;
   final NotificationCard notification;
   final int totalCount;
-  final double cornerRadius;
-  final Color color;
   final double height;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
-  final List<BoxShadow>? boxShadow;
-  final double padding;
 
   const LastNotificationCard({
     Key? key,
     required this.controller,
     required this.notification,
     required this.totalCount,
-    required this.color,
-    required this.cornerRadius,
     required this.height,
-    required this.notificationCardTitle,
-    required this.subtitleTextStyle,
-    required this.titleTextStyle,
-    required this.boxShadow,
-    required this.padding,
   }) : super(key: key);
 
   @override
@@ -45,140 +29,144 @@ class LastNotificationCard extends StatelessWidget {
           Slidable.of(context)?.close();
           controller.forward();
         },
-        child: Container(
+        child: PhysicalShape(
+          clipper: TicketClipper(),
+          color: Colors.white,
+          elevation: 2,
+          shadowColor: Colors.grey.shade100,
           key: ValueKey('LastNotificationCard'),
-          margin: EdgeInsets.symmetric(horizontal: padding),
-          height: height,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(cornerRadius),
-            boxShadow: boxShadow,
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                top: 16,
-                left: 16,
-                right: 16,
-                child: Opacity(
-                  opacity: Tween(begin: 0.0, end: 1.0)
-                      .animate(
-                        CurvedAnimation(
-                          parent: controller,
-                          curve: Interval(0.2, 0.3),
-                        ),
-                      )
-                      .value,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          notificationCardTitle,
-                          style: kCardTopTextStyle,
-                          maxLines: 1,
+          child: AnimatedContainer(
+            duration: const Duration(seconds: 1),
+            curve: Curves.easeOut,
+            width: 300,
+            height: height,
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child:
+                            Image.asset(notification.logo, width: 120),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text(notification.prize,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.blue)),
+                          ),
+                          RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              text: "Product: ",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade700,
+                                  fontWeight: FontWeight.w700),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: notification.product,
+                                    style: const TextStyle(fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          ),
+                          RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              text: "Purchased on: ",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade700,
+                                  fontWeight: FontWeight.w700),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: notification.purchaseDate,
+                                    style: const TextStyle(fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Divider(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24, right: 24),
+                      child: RichText(
+                        textAlign: TextAlign.left,
+                        text: TextSpan(
+                          text: "Coupon no: ",
+                          style: TextStyle(
+                              color: Colors.grey.shade700, fontWeight: FontWeight.w700),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: notification.couponNo,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                )),
+                          ],
                         ),
                       ),
-                      Text(
-                        'Today ${DateFormat('h:mm a').format(notification.date)}',
-                        style: kCardTopTextStyle,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Tween<Offset>(
-                  begin: Offset(0, 15),
-                  end: Offset(0, 10),
-                )
-                    .animate(
-                      CurvedAnimation(
-                        parent: controller,
-                        curve: Interval(0.0, 0.2),
+                    ),
+                    const Divider(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 24, right: 24),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Icon(Icons.watch_later, color: Colors.grey.shade400),
+                          ),
+                          Text('Draw on ' + notification.drawDate,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.grey.shade400,
+                              fontSize: 12,
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                    .value,
-                child: Visibility(
-                  visible: controller.value <= 0.2,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.account_circle,
-                      size: 48,
                     ),
-                    title: Text(
-                      notification.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: titleTextStyle,
-                    ),
-                    subtitle: Text(
-                      notification.subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: subtitleTextStyle,
-                    ),
-                  ),
+                  ],
                 ),
-              ),
-              Transform.translate(
-                offset: Tween<Offset>(
-                  begin: Offset(0, 10),
-                  end: Offset(0, 50),
-                )
-                    .animate(
-                      CurvedAnimation(
-                        parent: controller,
-                        curve: Interval(0.2, 0.4),
+                Positioned(
+                  right: 16,
+                  top: 16,
+                  child: Opacity(
+                    opacity: Tween(begin: 1.0, end: 0.0)
+                        .animate(
+                          CurvedAnimation(
+                            parent: controller,
+                            curve: Interval(0.0, 0.2),
+                          ),
+                        )
+                        .value,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 4.0,
                       ),
-                    )
-                    .value,
-                child: Visibility(
-                  visible: controller.value >= 0.2,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.account_circle,
-                      size: 48,
-                    ),
-                    title: Text(
-                      notification.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: titleTextStyle,
-                    ),
-                    subtitle: Text(
-                      notification.subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: subtitleTextStyle,
+                      child: Text(
+                        totalCount.toString(),
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 16,
-                child: Opacity(
-                  opacity: Tween(begin: 1.0, end: 0.0)
-                      .animate(
-                        CurvedAnimation(
-                          parent: controller,
-                          curve: Interval(0.0, 0.2),
-                        ),
-                      )
-                      .value,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 4.0,
-                    ),
-                    child: Text(
-                      '${totalCount - 1} more notification',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

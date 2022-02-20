@@ -12,14 +12,6 @@ class AnimatedOffsetList extends StatelessWidget {
   final List<NotificationCard> notificationCards;
   final double height;
   final double spacing;
-  final Color tileColor;
-  final double cornerRadius;
-  final String notificationCardTitle;
-  final TextStyle titleTextStyle;
-  final TextStyle? subtitleTextStyle;
-  final List<BoxShadow>? boxShadow;
-  final double padding;
-
   final Interval opacityInterval;
 
   const AnimatedOffsetList({
@@ -29,14 +21,7 @@ class AnimatedOffsetList extends StatelessWidget {
     required this.notificationCards,
     required this.height,
     required this.spacing,
-    required this.cornerRadius,
-    required this.tileColor,
-    required this.notificationCardTitle,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
-    required this.boxShadow,
     required this.opacityInterval,
-    required this.padding,
   }) : super(key: key);
 
   /// Gives initial value depending on the number of [NotificationCard]s
@@ -158,19 +143,13 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: NotificationTile(
-                        cardTitle: notificationCardTitle,
-                        date: notification.date,
-                        title: notification.title,
-                        subtitle: notification.subtitle,
+                        purchaseDate: notification.purchaseDate,
+                        drawDate: notification.drawDate,
+                        prize: notification.prize,
+                        couponNo: notification.couponNo,
+                        logo: notification.logo,
+                        product: notification.product,
                         height: height,
-                        color: tileColor,
-                        cornerRadius: cornerRadius,
-                        titleTextStyle: titleTextStyle,
-                        subtitleTextStyle: subtitleTextStyle,
-                        boxShadow: boxShadow,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: padding,
-                        ),
                       ),
                     ),
                   ),
