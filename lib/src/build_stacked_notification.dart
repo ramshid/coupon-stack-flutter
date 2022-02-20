@@ -26,7 +26,7 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
-  final double _containerHeight = 140;
+  final double _containerHeight = 220;
 
   @override
   void initState() {
