@@ -142,14 +142,21 @@ class AnimatedOffsetList extends StatelessWidget {
                     opacity: _tileOpacity(index),
                     child: Visibility(
                       visible: _lastCardVisibility(index),
-                      child: NotificationTile(
-                        purchaseDate: notification.purchaseDate,
-                        drawDate: notification.drawDate,
-                        prize: notification.prize,
-                        couponNo: notification.couponNo,
-                        logo: notification.logo,
-                        product: notification.product,
-                        height: height,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          border: Border.all(color: Color(0xffe6e6e6), width: 1, ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x1c000000),
+                              blurRadius: 1,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
