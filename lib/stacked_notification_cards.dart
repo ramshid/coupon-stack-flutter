@@ -20,7 +20,7 @@ class StackedNotificationCards extends StatelessWidget {
   const StackedNotificationCards({
     Key? key,
     required this.notificationCards,
-    this.cardsSpacing = 10,
+    this.cardsSpacing = 4,
     this.padding = 0,
   }) : super(key: key);
 

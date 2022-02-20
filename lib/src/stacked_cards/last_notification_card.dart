@@ -39,7 +39,7 @@ class LastNotificationCard extends StatelessWidget {
             duration: const Duration(seconds: 1),
             curve: Curves.easeOut,
             width: MediaQuery.of(context).size.width,
-            height: 160,
+            height: 140,
             child: Stack(
               children: [
                 Column(
@@ -48,7 +48,8 @@ class LastNotificationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
+                      padding:
+                          const EdgeInsets.only(left: 24, right: 24, top: 16),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -56,25 +57,46 @@ class LastNotificationCard extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
-                            child:
-                            Image.asset(notification.logo, width: 120),
+                            child: Image.asset(notification.logo, width: 120),
                           ),
-                          Text(notification.prize,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.blue)),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Text(notification.prize,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: Colors.blue)),
+                          ),
+                          RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              text: "Product: ",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey.shade700,
+                                  fontWeight: FontWeight.w700),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: notification.product,
+                                    style: const TextStyle(fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
+
+                    Divider(),
                     Padding(
-                      padding: const EdgeInsets.only(left: 24, right: 24),
+                      padding:
+                          const EdgeInsets.only(left: 24, right: 24, bottom: 8),
                       child: RichText(
                         textAlign: TextAlign.left,
                         text: TextSpan(
                           text: "Coupon no: ",
                           style: TextStyle(
-                              color: Colors.grey.shade700, fontWeight: FontWeight.w700),
+                              color: Colors.grey.shade700,
+                              fontWeight: FontWeight.w700),
                           children: <TextSpan>[
                             TextSpan(
                                 text: notification.couponNo,
@@ -92,9 +114,11 @@ class LastNotificationCard extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
-                            child: Icon(Icons.watch_later, color: Colors.grey.shade400),
+                            child: Icon(Icons.watch_later,
+                                color: Colors.grey.shade400),
                           ),
-                          Text('Draw on ' + notification.drawDate,
+                          Text(
+                            'Draw on ' + notification.drawDate,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.grey.shade400,
@@ -125,13 +149,13 @@ class LastNotificationCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25),
                         color: Color(0xff40e7f2),
                       ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 4.0,
-                      ),
                       child: Text(
                         totalCount.toString(),
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                     ),
                   ),
