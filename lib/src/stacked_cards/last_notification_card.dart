@@ -38,7 +38,7 @@ class LastNotificationCard extends StatelessWidget {
           child: AnimatedContainer(
             duration: const Duration(seconds: 1),
             curve: Curves.easeOut,
-            width: 300,
+            width: MediaQuery.of(context).size.width,
             height: height,
             child: Stack(
               children: [
@@ -67,19 +67,30 @@ class LastNotificationCard extends StatelessWidget {
                                     fontSize: 12,
                                     color: Colors.blue)),
                           ),
-                          RichText(
-                            textAlign: TextAlign.left,
-                            text: TextSpan(
-                              text: "Product: ",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey.shade700,
-                                  fontWeight: FontWeight.w700),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: notification.product,
-                                    style: const TextStyle(fontWeight: FontWeight.w500)),
-                              ],
+
+                          Opacity(
+                            opacity: Tween(begin: 0.0, end: 1.0)
+                                .animate(
+                              CurvedAnimation(
+                                parent: controller,
+                                curve: Interval(0.0, 0.2),
+                              ),
+                            )
+                                .value,
+                            child: RichText(
+                              textAlign: TextAlign.left,
+                              text: TextSpan(
+                                text: "Product: ",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey.shade700,
+                                    fontWeight: FontWeight.w700),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: notification.product,
+                                      style: const TextStyle(fontWeight: FontWeight.w500)),
+                                ],
+                              ),
                             ),
                           ),
                           RichText(

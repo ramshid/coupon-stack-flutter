@@ -31,7 +31,7 @@ class NotificationTile extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(seconds: 1),
         curve: Curves.easeOut,
-        width: 300,
+        width: MediaQuery.of(context).size.width,
         height: height,
         child: Column(
           mainAxisSize: MainAxisSize.max,
