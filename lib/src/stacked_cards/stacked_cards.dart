@@ -65,20 +65,20 @@ class StackedCards extends StatelessWidget {
           spacing: maxSpacing,
           opacityInterval: Interval(0.4, 0.6),
         ),
-        LastNotificationCard(
-          controller: controller,
-          notification: lastNotification,
-          totalCount: notificationCards.length,
-          height: containerHeight,
-        ),
-        ExpandedList(
-          controller: controller,
-          containerHeight: containerHeight,
-          spacing: spacing,
-          initialSpacing: 2 * spacing,
-          notificationCards: notificationCards,
-          endPadding: padding,
-        ),
+        // LastNotificationCard(
+        //   controller: controller,
+        //   notification: lastNotification,
+        //   totalCount: notificationCards.length,
+        //   height: containerHeight,
+        // ),
+        // ExpandedList(
+        //   controller: controller,
+        //   containerHeight: containerHeight,
+        //   spacing: spacing,
+        //   initialSpacing: 2 * spacing,
+        //   notificationCards: notificationCards,
+        //   endPadding: padding,
+        // ),
       ],
     );
   }
