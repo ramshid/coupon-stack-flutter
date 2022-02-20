@@ -57,14 +57,14 @@ class StackedCards extends StatelessWidget {
           notificationCount: notificationCards.length,
           padding: padding,
         ),
-        AnimatedOffsetList(
-          controller: controller,
-          interval: Interval(0.4, 0.8),
-          notificationCards: notificationCards,
-          height: containerHeight,
-          spacing: maxSpacing,
-          opacityInterval: Interval(0.4, 0.6),
-        ),
+        // AnimatedOffsetList(
+        //   controller: controller,
+        //   interval: Interval(0.4, 0.8),
+        //   notificationCards: notificationCards,
+        //   height: containerHeight,
+        //   spacing: maxSpacing,
+        //   opacityInterval: Interval(0.4, 0.6),
+        // ),
         LastNotificationCard(
           controller: controller,
           notification: lastNotification,
