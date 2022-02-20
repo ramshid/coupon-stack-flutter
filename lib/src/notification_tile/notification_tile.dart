@@ -52,7 +52,7 @@ class NotificationTile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(prize ?? '',
+                    child: Text(prize,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
