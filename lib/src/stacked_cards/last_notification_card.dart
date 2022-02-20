@@ -39,7 +39,7 @@ class LastNotificationCard extends StatelessWidget {
             duration: const Duration(seconds: 1),
             curve: Curves.easeOut,
             width: MediaQuery.of(context).size.width,
-            height: 180,
+            height: 160,
             child: Stack(
               children: [
                 Column(
@@ -59,18 +59,14 @@ class LastNotificationCard extends StatelessWidget {
                             child:
                             Image.asset(notification.logo, width: 120),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: Text(notification.prize,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Colors.blue)),
-                          ),
+                          Text(notification.prize,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.blue)),
                         ],
                       ),
                     ),
-                    const Divider(height: 24),
                     Padding(
                       padding: const EdgeInsets.only(left: 24, right: 24),
                       child: RichText(
@@ -90,7 +86,6 @@ class LastNotificationCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Divider(height: 24),
                     Padding(
                       padding: const EdgeInsets.only(left: 24, right: 24),
                       child: Row(
@@ -123,14 +118,20 @@ class LastNotificationCard extends StatelessWidget {
                           ),
                         )
                         .value,
-                    child: Padding(
+                    child: Container(
+                      width: 32,
+                      height: 27,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Color(0xff40e7f2),
+                      ),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16.0,
                         vertical: 4.0,
                       ),
                       child: Text(
                         totalCount.toString(),
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                     ),
                   ),

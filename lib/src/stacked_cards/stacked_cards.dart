@@ -71,15 +71,6 @@ class StackedCards extends StatelessWidget {
           totalCount: notificationCards.length,
           height: containerHeight,
         ),
-        GestureDetector(
-          onTap: () {
-            controller.forward();
-          },
-          child: Visibility(
-            visible: notificationCards.length > 1,
-            child: Text('View All Coupons'),
-          ),
-        ),
         ExpandedList(
           controller: controller,
           containerHeight: containerHeight,
