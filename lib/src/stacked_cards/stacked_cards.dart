@@ -50,13 +50,6 @@ class StackedCards extends StatelessWidget {
     /// Wrapped in [Slidable], this will help to slide when cards are stacked.
     return Stack(
       children: [
-        OffsetSpacer(
-          height: containerHeight,
-          controller: controller,
-          spacing: 2 * spacing,
-          notificationCount: notificationCards.length,
-          padding: padding,
-        ),
         AnimatedOffsetList(
           controller: controller,
           interval: Interval(0.4, 0.8),
