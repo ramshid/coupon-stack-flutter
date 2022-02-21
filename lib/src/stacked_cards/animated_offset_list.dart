@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../stacked_notification_cards.dart';
+import '../clipp.dart';
 import '../notification_tile/notification_tile.dart';
 
 /// This  widget shows when all [NotificationCard]s are stacked
@@ -143,18 +144,20 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: NotificationTile(
-                          isSmall: true,
-                          purchaseDate: notification.purchaseDate,
-                          drawDate: notification.drawDate,
-                          prize: notification.prize,
-                          couponNo: notification.couponNo,
-                          logo: notification.logo,
-                          product: notification.product,
-                          height: height,
-                        ),
-                      ),
+                          width: MediaQuery.of(context).size.width,
+                          child: PhysicalShape(
+                              clipper: TicketClipper(),
+                              color: Colors.white,
+                              elevation: 2,
+                              shadowColor: Colors.grey.shade100,
+                              key: ValueKey('LastNotificationCard'),
+                              child: AnimatedContainer(
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.easeOut,
+                                margin: EdgeInsets.only(top: 80);
+                                width: MediaQuery.of(context).size.width,
+                                height: 80,
+                              ))),
                     ),
                   ),
                 ),

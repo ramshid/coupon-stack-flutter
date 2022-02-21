@@ -9,7 +9,6 @@ class NotificationTile extends StatelessWidget {
   final String prize;
   final String product;
   final double height;
-  final bool isSmall;
 
   const NotificationTile({
     Key? key,
@@ -20,7 +19,6 @@ class NotificationTile extends StatelessWidget {
     required this.prize,
     required this.product,
     required this.height,
-    required this.isSmall
   }) : super(key: key);
 
   @override
@@ -34,8 +32,7 @@ class NotificationTile extends StatelessWidget {
         duration: const Duration(seconds: 1),
         curve: Curves.easeOut,
         width: MediaQuery.of(context).size.width,
-        height: isSmall ? 100 : height,
-        margin: isSmall ? EdgeInsets.only(top: 80) : EdgeInsets.all(16),
+        height: height,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +58,7 @@ class NotificationTile extends StatelessWidget {
                             fontSize: 12,
                             color: Colors.blue)),
                   ),
-                  if (!this.isSmall) RichText(
+                  RichText(
                     textAlign: TextAlign.left,
                     text: TextSpan(
                       text: "Product: ",
@@ -76,7 +73,7 @@ class NotificationTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (!this.isSmall) RichText(
+                  RichText(
                     textAlign: TextAlign.left,
                     text: TextSpan(
                       text: "Purchased on: ",
@@ -94,7 +91,7 @@ class NotificationTile extends StatelessWidget {
                 ],
               ),
             ),
-            if (!this.isSmall) const Divider(height: 24),
+            const Divider(height: 24),
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 24),
               child: RichText(
@@ -114,7 +111,7 @@ class NotificationTile extends StatelessWidget {
                 ),
               ),
             ),
-            if (!this.isSmall) const Divider(height: 24),
+            const Divider(height: 24),
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 24),
               child: Row(

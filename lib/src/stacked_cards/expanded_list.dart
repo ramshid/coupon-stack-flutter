@@ -95,15 +95,17 @@ class ExpandedList extends StatelessWidget {
                   spacing: _getSpacing(index, spacing),
                   index: index,
                   endPadding: _getEndPadding(index),
-                  child: NotificationTile(
-                    isSmall: false,
-                    purchaseDate: notification.purchaseDate,
-                    product: notification.product,
-                    drawDate: notification.drawDate,
-                    prize: notification.prize,
-                    couponNo: notification.couponNo,
-                    logo: notification.logo,
-                    height: containerHeight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: NotificationTile(
+                      purchaseDate: notification.purchaseDate,
+                      product: notification.product,
+                      drawDate: notification.drawDate,
+                      prize: notification.prize,
+                      couponNo: notification.couponNo,
+                      logo: notification.logo,
+                      height: containerHeight,
+                    ),
                   ),
                 );
               },
