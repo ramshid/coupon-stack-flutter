@@ -149,7 +149,7 @@ class AnimatedOffsetList extends StatelessWidget {
                           child: PhysicalShape(
                               clipper: TicketClipper(),
                               color: Colors.white,
-                              elevation: index == notificationCards.length - 1 ? 0 : 2,
+                              elevation: index == notificationCards.length - 1 && controller.value <= 0.4 ? 0 : 2,
                               shadowColor: Colors.grey.shade100,
                               key: ValueKey('LastNotificationCard'),
                               child: AnimatedContainer(
