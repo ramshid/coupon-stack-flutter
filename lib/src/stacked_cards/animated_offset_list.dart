@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../stacked_notification_cards.dart';
@@ -143,8 +144,9 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: Container(
+                        margin: EdgeInsets.only(top: 60),
                         width: MediaQuery.of(context).size.width,
-                        height: 180,
+                        height:120,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11),
                           border: Border.all(color: Color(0xffe6e6e6), width: 1, ),
