@@ -145,7 +145,7 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: Container(
-                        margin: EdgeInsets.only(top: 60),
+                        margin: EdgeInsets.only(top: 80),
                         width: MediaQuery.of(context).size.width,
                         height: 80,
                         decoration: BoxDecoration(
