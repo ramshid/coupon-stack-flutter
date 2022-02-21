@@ -59,9 +59,9 @@ class AnimatedOffsetList extends StatelessWidget {
     if (index == length - 1) {
       return 1.0;
     } else if (index == length - 2) {
-      return 0.95;
-    } else {
       return 0.9;
+    } else {
+      return 0.85;
     }
   }
 
@@ -144,7 +144,7 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: Container(
-                          padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
+                          padding: const EdgeInsets.only(left: 16.0, right: 16),
                           width: MediaQuery.of(context).size.width,
                           child: PhysicalShape(
                               clipper: TicketClipper(),
