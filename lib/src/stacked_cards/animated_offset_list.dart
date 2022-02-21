@@ -143,17 +143,21 @@ class AnimatedOffsetList extends StatelessWidget {
                     opacity: _tileOpacity(index),
                     child: Visibility(
                       visible: _lastCardVisibility(index),
-                      child: PhysicalShape(
-                          clipper: TicketClipper(),
-                          color: Colors.white,
-                          elevation: 2,
-                          shadowColor: Colors.grey.shade100,
-                          key: ValueKey('LastNotificationCard'),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 90),
-                            width: MediaQuery.of(context).size.width,
-                            height: 80,
-                          )),
+                      child: Container(
+                          padding: const EdgeInsets.only(left: 16.0, right: 16),
+                          width: MediaQuery.of(context).size.width,
+                          child: PhysicalShape(
+                              clipper: TicketClipper(),
+                              color: Colors.white,
+                              elevation: index == notificationCards.length - 1 ? 0 : 2,
+                              shadowColor: Colors.grey.shade100,
+                              key: ValueKey('LastNotificationCard'),
+                              child: AnimatedContainer(
+                                duration: const Duration(seconds: 1),
+                                curve: Curves.easeOut,
+                                width: MediaQuery.of(context).size.width,
+                                height: 80,
+                              ))),
                     ),
                   ),
                 ),
