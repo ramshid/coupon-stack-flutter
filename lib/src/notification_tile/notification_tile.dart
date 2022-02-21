@@ -9,6 +9,7 @@ class NotificationTile extends StatelessWidget {
   final String prize;
   final String product;
   final double height;
+  final bool isSmall;
 
   const NotificationTile({
     Key? key,
@@ -19,6 +20,7 @@ class NotificationTile extends StatelessWidget {
     required this.prize,
     required this.product,
     required this.height,
+    required this.isSmall
   }) : super(key: key);
 
   @override
@@ -58,7 +60,7 @@ class NotificationTile extends StatelessWidget {
                             fontSize: 12,
                             color: Colors.blue)),
                   ),
-                  RichText(
+                  if (!this.isSmall) RichText(
                     textAlign: TextAlign.left,
                     text: TextSpan(
                       text: "Product: ",
@@ -73,7 +75,7 @@ class NotificationTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  RichText(
+                  if (!this.isSmall) RichText(
                     textAlign: TextAlign.left,
                     text: TextSpan(
                       text: "Purchased on: ",
@@ -91,7 +93,7 @@ class NotificationTile extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(height: 24),
+            if (!this.isSmall) const Divider(height: 24),
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 24),
               child: RichText(
@@ -111,7 +113,7 @@ class NotificationTile extends StatelessWidget {
                 ),
               ),
             ),
-            const Divider(height: 24),
+            if (!this.isSmall) const Divider(height: 24),
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 24),
               child: Row(

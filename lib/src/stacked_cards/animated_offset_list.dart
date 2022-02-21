@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../stacked_notification_cards.dart';
@@ -133,7 +132,6 @@ class AnimatedOffsetList extends StatelessWidget {
         children: [
           ...notificationCards.map(
             (notification) {
-
               final index = notificationCards.indexOf(notification);
               return Transform.translate(
                 offset: _tileOffset(index),
@@ -145,20 +143,16 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: Container(
-                        margin: EdgeInsets.only(top: 90),
                         width: MediaQuery.of(context).size.width,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(11),
-                          border: Border.all(color: Color(0xffe6e6e6), width: 1, ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x1c000000),
-                              blurRadius: 1,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                          color: Colors.white,
+                        child: NotificationTile(
+                          isSmall: true,
+                          purchaseDate: notification.purchaseDate,
+                          drawDate: notification.drawDate,
+                          prize: notification.prize,
+                          couponNo: notification.couponNo,
+                          logo: notification.logo,
+                          product: notification.product,
+                          height: height,
                         ),
                       ),
                     ),

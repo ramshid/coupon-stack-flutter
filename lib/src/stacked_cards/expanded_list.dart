@@ -96,6 +96,7 @@ class ExpandedList extends StatelessWidget {
                   index: index,
                   endPadding: _getEndPadding(index),
                   child: NotificationTile(
+                    isSmall: false,
                     purchaseDate: notification.purchaseDate,
                     product: notification.product,
                     drawDate: notification.drawDate,
