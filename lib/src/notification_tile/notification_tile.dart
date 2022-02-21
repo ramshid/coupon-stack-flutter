@@ -34,7 +34,8 @@ class NotificationTile extends StatelessWidget {
         duration: const Duration(seconds: 1),
         curve: Curves.easeOut,
         width: MediaQuery.of(context).size.width,
-        height: height,
+        height: isSmall ? 100 : height,
+        margin: isSmall ? EdgeInsets.only(top: 80) : EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,

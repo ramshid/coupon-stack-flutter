@@ -51,17 +51,14 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
       builder: (_, __) => Column(
         key: ValueKey('NotificationList'),
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
-            child: StackedCards(
-              key: ValueKey('CollapsedCards'),
-              controller: _animationController,
-              notificationCards: notificationCards,
-              containerHeight: _containerHeight,
-              spacing: spacing,
-              maxSpacing: 2 * spacing,
-              padding: padding,
-            ),
+          StackedCards(
+            key: ValueKey('CollapsedCards'),
+            controller: _animationController,
+            notificationCards: notificationCards,
+            containerHeight: _containerHeight,
+            spacing: spacing,
+            maxSpacing: 2 * spacing,
+            padding: padding,
           ),
         ],
       ),
