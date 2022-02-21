@@ -133,6 +133,7 @@ class AnimatedOffsetList extends StatelessWidget {
         children: [
           ...notificationCards.map(
             (notification) {
+
               final index = notificationCards.indexOf(notification);
               return Transform.translate(
                 offset: _tileOffset(index),
@@ -146,7 +147,7 @@ class AnimatedOffsetList extends StatelessWidget {
                       child: Container(
                         margin: EdgeInsets.only(top: 60),
                         width: MediaQuery.of(context).size.width,
-                        height:120,
+                        height: 80,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11),
                           border: Border.all(color: Color(0xffe6e6e6), width: 1, ),
