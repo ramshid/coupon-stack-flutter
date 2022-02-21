@@ -144,6 +144,7 @@ class AnimatedOffsetList extends StatelessWidget {
                     child: Visibility(
                       visible: _lastCardVisibility(index),
                       child: Container(
+                          padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
                           width: MediaQuery.of(context).size.width,
                           child: PhysicalShape(
                               clipper: TicketClipper(),
@@ -154,7 +155,7 @@ class AnimatedOffsetList extends StatelessWidget {
                               child: AnimatedContainer(
                                 duration: const Duration(seconds: 1),
                                 curve: Curves.easeOut,
-                                margin: EdgeInsets.only(top: 80),
+                                margin: EdgeInsets.only(top: 100),
                                 width: MediaQuery.of(context).size.width,
                                 height: 80,
                               ))),
