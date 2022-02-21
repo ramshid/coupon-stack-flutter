@@ -99,19 +99,16 @@ class ExpandedList extends StatelessWidget {
                   onTap: () {
                     controller.reverse();
                   },
-                  child: Container(
-                    color: Colors.red,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 16.0, right: 16, top: 16),
-                      child: NotificationTile(
-                        purchaseDate: notification.purchaseDate,
-                        product: notification.product,
-                        drawDate: notification.drawDate,
-                        prize: notification.prize,
-                        couponNo: notification.couponNo,
-                        logo: notification.logo,
-                        height: containerHeight,
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
+                    child: NotificationTile(
+                      purchaseDate: notification.purchaseDate,
+                      product: notification.product,
+                      drawDate: notification.drawDate,
+                      prize: notification.prize,
+                      couponNo: notification.couponNo,
+                      logo: notification.logo,
+                      height: containerHeight,
                     ),
                   ),
                 ),
