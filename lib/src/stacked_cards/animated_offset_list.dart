@@ -154,7 +154,7 @@ class AnimatedOffsetList extends StatelessWidget {
                               child: AnimatedContainer(
                                 duration: const Duration(seconds: 1),
                                 curve: Curves.easeOut,
-                                margin: EdgeInsets.only(top: 80);
+                                margin: EdgeInsets.only(top: 80),
                                 width: MediaQuery.of(context).size.width,
                                 height: 80,
                               ))),
