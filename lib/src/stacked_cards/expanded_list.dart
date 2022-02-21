@@ -82,21 +82,25 @@ class ExpandedList extends StatelessWidget {
     reversedList.sort((a, b) => b.couponNo.compareTo(a.couponNo));
     return Visibility(
       visible: _getListVisibility(reversedList.length),
-      child: SlidableNotificationListener(
-        child: Column(
-          key: ValueKey('ExpandedList'),
-          children: [
-            ...reversedList.map(
-              (notification) {
-                final index = reversedList.indexOf(notification);
-                return BuildWithAnimation(
-                  key: ValueKey(notification.couponNo),
-                  // slidKey: ValueKey(notification.dateTime),
-                  spacing: _getSpacing(index, spacing),
-                  index: index,
-                  endPadding: _getEndPadding(index),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
+      child: Column(
+        key: ValueKey('ExpandedList'),
+        children: [
+          ...reversedList.map(
+            (notification) {
+              final index = reversedList.indexOf(notification);
+              return BuildWithAnimation(
+                key: ValueKey(notification.couponNo),
+                // slidKey: ValueKey(notification.dateTime),
+                spacing: _getSpacing(index, spacing),
+                index: index,
+                endPadding: _getEndPadding(index),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
+                  child: GestureDetector(
+                    key: ValueKey('onTapExpand' + notification.couponNo),
+                    onTap: () {
+                      controller.reverse();
+                    },
                     child: NotificationTile(
                       purchaseDate: notification.purchaseDate,
                       product: notification.product,
@@ -107,11 +111,11 @@ class ExpandedList extends StatelessWidget {
                       height: containerHeight,
                     ),
                   ),
-                );
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
