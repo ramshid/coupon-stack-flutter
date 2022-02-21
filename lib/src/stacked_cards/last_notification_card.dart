@@ -29,127 +29,130 @@ class LastNotificationCard extends StatelessWidget {
           Slidable.of(context)?.close();
           controller.forward();
         },
-        child: PhysicalShape(
-          clipper: TicketClipper(),
-          color: Colors.white,
-          elevation: 2,
-          shadowColor: Colors.grey.shade100,
-          key: ValueKey('LastNotificationCard'),
-          child: AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeOut,
-            width: MediaQuery.of(context).size.width,
-            height: 168,
-            child: Stack(
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 24, right: 24, top: 16),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: Image.asset(notification.logo, width: 120),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 4.0),
-                            child: Text(notification.prize,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 16.0, right: 16),
+          child: PhysicalShape(
+            clipper: TicketClipper(),
+            color: Colors.white,
+            elevation: 2,
+            shadowColor: Colors.grey.shade100,
+            key: ValueKey('LastNotificationCard'),
+            child: AnimatedContainer(
+              duration: const Duration(seconds: 1),
+              curve: Curves.easeOut,
+              width: MediaQuery.of(context).size.width,
+              height: 168,
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 24, right: 24, top: 16),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Image.asset(notification.logo, width: 120),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 4.0),
+                              child: Text(notification.prize,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                      color: Colors.blue)),
+                            ),
+                            Text(notification.product,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.blue)),
-                          ),
-                          Text(notification.product,
-                              style: const TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                    Divider(),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 24, right: 24, bottom: 8),
-                      child: RichText(
-                        textAlign: TextAlign.left,
-                        text: TextSpan(
-                          text: "Coupon no: ",
-                          style: TextStyle(
-                              color: Colors.grey.shade700,
-                              fontWeight: FontWeight.w700),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: notification.couponNo,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12,
-                                )),
+                                    fontSize: 11, fontWeight: FontWeight.w500)),
                           ],
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 24, right: 24),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Icon(Icons.watch_later,
-                                color: Colors.grey.shade400),
-                          ),
-                          Text(
-                            'Draw on ' + notification.drawDate,
+                      Divider(),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                        child: RichText(
+                          textAlign: TextAlign.left,
+                          text: TextSpan(
+                            text: "Coupon no: ",
                             style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Colors.grey.shade400,
-                              fontSize: 12,
+                                color: Colors.grey.shade700,
+                                fontWeight: FontWeight.w700),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: notification.couponNo,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 24, right: 24),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Icon(Icons.watch_later,
+                                  color: Colors.grey.shade400),
+                            ),
+                            Text(
+                              'Draw on ' + notification.drawDate,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.grey.shade400,
+                                fontSize: 12,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    right: 16,
+                    top: 16,
+                    child: Opacity(
+                      opacity: Tween(begin: 1.0, end: 0.0)
+                          .animate(
+                            CurvedAnimation(
+                              parent: controller,
+                              curve: Interval(0.0, 0.2),
                             ),
                           )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  right: 16,
-                  top: 16,
-                  child: Opacity(
-                    opacity: Tween(begin: 1.0, end: 0.0)
-                        .animate(
-                          CurvedAnimation(
-                            parent: controller,
-                            curve: Interval(0.0, 0.2),
+                          .value,
+                      child: Container(
+                        width: 32,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Color(0xff40e7f2),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8),
+                          child: Text(
+                            totalCount.toString(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
-                        )
-                        .value,
-                    child: Container(
-                      width: 32,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Color(0xff40e7f2),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 8),
-                        child: Text(
-                          totalCount.toString(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
