@@ -134,7 +134,7 @@ class LastNotificationCard extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Color(0xffff0000),
+                          color: Color(0xff00be7e),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8.0, right: 8),
